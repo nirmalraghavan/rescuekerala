@@ -126,6 +126,31 @@ class RescueCampAdmin(admin.ModelAdmin):
                     'clothing_req', 'sanitary_req', 'medical_req', 'other_req')
     list_filter = ('district','status')
 
+    def get_readonly_fields(self, request, obj=None):
+            if obj.status == 'active':
+                return ()
+            else:
+                return (
+                    'name',
+                    'location',
+                    'district',
+                    'taluk',
+                    'village',
+                    'contacts',
+                    'facilities_available',
+                    'map_link',
+                    'latlng',
+                    'total_people',
+                    'total_males',
+                    'total_females',
+                    'total_infants',
+                    'food_req',
+                    'clothing_req',
+                    'sanitary_req',
+                    'medical_req',
+                    'other_req'
+                )
+
     def download_csv(self, request, queryset):
         header_row = ('district', 'name', 'location', 'taluk' , 'village' ,  'status', 'contacts', 'facilities_available', 'total_people',
                       'total_males', 'total_females', 'total_infants', 'food_req',
