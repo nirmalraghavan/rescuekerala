@@ -44,13 +44,8 @@ class CreateRequest(CreateView):
     model = Request
     template_name='mainapp/request_form.html'
     fields = [
-        'district',
-        'location',
         'requestee',
         'requestee_phone',
-        'is_request_for_others',
-        'latlng',
-        'latlng_accuracy',
         'needrescue',
         'detailrescue',
         'needwater',
@@ -65,7 +60,12 @@ class CreateRequest(CreateView):
         'detailkit_util',
         'needtoilet',
         'detailtoilet',
-        'needothers'
+        'needothers',
+        'district',
+        'location',
+        'is_request_for_others',
+        'latlng',
+        'latlng_accuracy',
     ]
     success_url = '/req_sucess/'
 
